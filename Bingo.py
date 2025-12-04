@@ -18,16 +18,15 @@ class Box:
     
     def __repr__(self):
         counter = 1
+        res = ""
         for i in self.main_box:
             if counter % 5 == 0 and counter != 1:
-                print("\n")
+                res += "\n"
                 counter += 1
             else:
-                print(f"| {i} |",end=" ")
+                res+=f"| {i} |"
                 counter += 1
-
-            
-
+        return res
 
 
 #TESTING:-
