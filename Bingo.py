@@ -1,10 +1,11 @@
 #UNDER DEVELOPEMENT!
 
-from random import shuffle, randint, choice
+from random import shuffle
 
 class Box:
     def __init__(self):
         self.main_box = self.create_box()
+        self.CD = dict.fromkeys(self.main_box, False)
     
     def create_box(self):
         B = ["01","02","03","04","05",
@@ -27,6 +28,12 @@ class Box:
                 res+=f"| {i} |"
                 counter += 1
         return res
+    
+    def isSolved(self) -> bool:
+        return False
+    
+    def cross_element(self, IndexOfElement: int):
+        ...
 
 
 #TESTING:-
