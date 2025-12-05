@@ -25,17 +25,25 @@ class Box:
                 res += "\n"
                 counter += 1
             else:
-                res+=f"| {i} |"
-                counter += 1
+                if not self.isCrossed(i):
+                    res+=f"| {i} |"
+                    counter += 1
+                if self.isCrossed(i):
+                    res += f"\033[9m| {i} |\033[0m"
+                    counter += 1
         return res
     
-    def isSolved(self) -> bool:
-        return False
+    def isCrossed(self, Element: str) -> bool:
+        return self.CD[Element] == True
     
-    def cross_element(self, IndexOfElement: int):
-        ...
+    def cross_element(self, Element: str):
+        if self.CD[Element] == True:
+            return None
+        else:
+            self.CD[Element] = True
 
 
 #TESTING:-
 X = Box()
+X.cross_element("20")
 print(X)
