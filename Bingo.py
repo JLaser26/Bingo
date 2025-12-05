@@ -29,7 +29,7 @@ class Box:
                     res+=f"| {i} |"
                     counter += 1
                 if self.isCrossed(i):
-                    res += f"\033[9m| {i} |\033[0m"
+                    res += f"| \033[9;31m{i}\033[0m |"
                     counter += 1
         return res
     
