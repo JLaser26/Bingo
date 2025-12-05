@@ -54,10 +54,21 @@ class Box:
     
     def chunk(self, lst, size):
         return [lst[i:i+size] for i in range(0, len(lst), size)]
-
+    
+    def transpose(self, matrix):
+        return [list(row) for row in zip(*matrix)]
     
     def check_vertical(self):
-        ...
+        broken_box = self.chunk(self.main_box, 5)
+        nb = self.transpose(broken_box)
+        counter = 1
+        for i in nb:
+            if self.isCrossed(i[0]) and self.isCrossed(i[1]) and self.isCrossed(i[2]) and self.isCrossed(i[3]) and self.isCrossed(i[4]):
+                return f"{counter}-col"
+            else:
+                counter += 1
+        return None
+        
     
     def check_horizontal(self):
         broken_box = self.chunk(self.main_box, 5)
@@ -67,12 +78,24 @@ class Box:
                 return f"{counter}-row"
             else:
                 counter += 1
+        return None
 
 
 #TESTING:-
 X = Box()
 
 while True:
+    rc = X.check_horizontal()
+    cc = X.check_vertical()
+    if rc != None:
+        print(X)
+        print(rc)
+        break
+    if cc != None:
+        print(X)
+        print(cc)
+        break
     print(X)
     inp = input("Enter:- ")
     X.cross_element(inp)
+    
