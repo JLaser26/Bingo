@@ -33,9 +33,9 @@ class Box:
 
         if row_check:
             self.group_data[row_check] = True
-        elif column_check:
+        if column_check:
             self.group_data[column_check] = True
-        elif diagonal_check:
+        if diagonal_check:
             self.group_data[diagonal_check] = True
     
     def __repr__(self):
