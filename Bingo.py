@@ -22,6 +22,22 @@ class Box:
         shuffle(B)
         return B
     
+    def box_finish(self):
+        a = [self.isCrossed(i) for i in self.main_box]
+        return all(a)
+    
+    def updater(self):
+        row_check = self.check_horizontal()
+        column_check = self.check_vertical()
+        diagonal_check = self.check_diagonal()
+
+        if row_check:
+            self.group_data[row_check] = True
+        elif column_check:
+            self.group_data[column_check] = True
+        elif diagonal_check:
+            self.group_data[diagonal_check] = True
+    
     def __repr__(self):
         counter = 1
         res = ""
@@ -94,20 +110,23 @@ class Box:
 X = Box()
 
 while True:
-    rc = X.check_horizontal()
-    cc = X.check_vertical()
-    cd = X.check_diagonal()
-    if rc != None:
+    # rc = X.check_horizontal()
+    # cc = X.check_vertical()
+    # cd = X.check_diagonal()
+    # if rc != None:
+    #     print(X)
+    #     print(rc)
+    #     break
+    # if cc != None:
+    #     print(X)
+    #     print(cc)
+    #     break
+    # if cd != None:
+    #     print(X)
+    #     print(cd)
+    #     break
+    if X.box_finish():
         print(X)
-        print(rc)
-        break
-    if cc != None:
-        print(X)
-        print(cc)
-        break
-    if cd != None:
-        print(X)
-        print(cd)
         break
     print(X)
     inp = input("Enter:- ")
