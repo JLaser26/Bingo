@@ -79,6 +79,15 @@ class Box:
             else:
                 counter += 1
         return None
+    
+    def check_diagonal(self):
+        mb = self.main_box
+        if self.isCrossed(mb[0]) and self.isCrossed(mb[6]) and self.isCrossed(mb[12]) and self.isCrossed(mb[18]) and self.isCrossed(mb[24]):
+            return f"1-dia"
+        elif self.isCrossed(mb[4]) and self.isCrossed(mb[8]) and self.isCrossed(mb[12]) and self.isCrossed(mb[16]) and self.isCrossed(mb[20]):
+            return f"2-dia"
+        else:
+            return None
 
 
 #TESTING:-
@@ -87,6 +96,7 @@ X = Box()
 while True:
     rc = X.check_horizontal()
     cc = X.check_vertical()
+    cd = X.check_diagonal()
     if rc != None:
         print(X)
         print(rc)
@@ -94,6 +104,10 @@ while True:
     if cc != None:
         print(X)
         print(cc)
+        break
+    if cd != None:
+        print(X)
+        print(cd)
         break
     print(X)
     inp = input("Enter:- ")
