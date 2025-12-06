@@ -64,7 +64,7 @@ class Box:
     
     def cross_element(self, Element: str):
         if self.CD[Element] == True:
-            return None
+            pass
         else:
             self.CD[Element] = True
     
