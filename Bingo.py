@@ -125,8 +125,10 @@ while True:
     #     print(X)
     #     print(cd)
     #     break
+    X.updater()
     if X.box_finish():
         print(X)
+        print(X.group_data)
         break
     print(X)
     inp = input("Enter:- ")
