@@ -1,8 +1,6 @@
-#UNDER DEVELOPEMENT!
-
-from random import shuffle
 
 class Box:
+    from random import shuffle
     def __init__(self):
         self.main_box = self.create_box()
         self.CD = dict.fromkeys(self.main_box, False)
@@ -19,7 +17,7 @@ class Box:
              "16","17","18","19","20",
              "21","22","23","24","25"
              ]
-        shuffle(B)
+        self.shuffle(B)
         return B
     
     def box_finish(self):
