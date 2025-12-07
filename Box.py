@@ -104,33 +104,3 @@ class Box:
             return f"2-dia"
         else:
             return None
-
-
-#TESTING:-
-X = Box()
-
-while True:
-    # rc = X.check_horizontal()
-    # cc = X.check_vertical()
-    # cd = X.check_diagonal()
-    # if rc != None:
-    #     print(X)
-    #     print(rc)
-    #     break
-    # if cc != None:
-    #     print(X)
-    #     print(cc)
-    #     break
-    # if cd != None:
-    #     print(X)
-    #     print(cd)
-    #     break
-    X.updater()
-    if X.box_finish():
-        print(X)
-        print(X.group_data)
-        break
-    print(X)
-    inp = input("Enter:- ")
-    X.cross_element(inp)
-    
