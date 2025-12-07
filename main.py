@@ -11,10 +11,14 @@ def clear():
 def main():
     P1 = Box()
     while True:
-        
-        print(P1)
-        Select(P1)
         clear()
+        print()
+        print("=="*20)
+        print()
+        print(P1)
+        print("=="*20)
+
+        Select(P1)
         if P1.box_finish():
             print(P1)
             break
