@@ -8,14 +8,29 @@ def Select(player: Box):
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
+def BINGO_COUNTER(player: Box):
+    d = {0: None, 1: "B", 2: "BI", 3: "BIN", 4: "BING", 5: "BINGO"}
+    res = 0
+    if player.check_vertical():
+        res += 1
+    if player.check_horizontal():
+        res += 1
+    if player.check_diagonal():
+        res += 1
+
+    return d[res]
+
 def main():
     P1 = Box()
     while True:
+        bc = BINGO_COUNTER(P1)
         clear()
         print()
         print("=="*20)
         print()
         print(P1)
+        if bc:
+            print(bc)
         print("=="*20)
 
         Select(P1)
