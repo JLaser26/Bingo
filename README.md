@@ -1,1 +1,3 @@
-**An attempt to create a simple terminal based bingo game **
+**An attempt to create a simple terminal based bingo game**
+
+**UNDER DEVELOPEMENT**
