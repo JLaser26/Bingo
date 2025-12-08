@@ -11,12 +11,9 @@ def clear():
 def BINGO_COUNTER(player: Box):
     d = {0: None, 1: "B", 2: "BI", 3: "BIN", 4: "BING", 5: "BINGO"}
     res = 0
-    if player.check_vertical():
-        res += 1
-    if player.check_horizontal():
-        res += 1
-    if player.check_diagonal():
-        res += 1
+    if player.check_vertical(): res += 1
+    if player.check_horizontal(): res += 1
+    if player.check_diagonal(): res += 1
 
     return d[res]
 
