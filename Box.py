@@ -11,6 +11,8 @@ class Box:
                                  "2-col": False, "3-col": False, "4-col": False, 
                                  "5-col": False, "1-dia": False, "2-dia": False
                                  }
+        
+        self.updater()
     
     def create_box(self):
         B = ["01","02","03","04","05",
@@ -63,10 +65,7 @@ class Box:
         return self.CD[Element] == True
     
     def cross_element(self, Element: str):
-        if self.CD[Element] == True:
-            pass
-        else:
-            self.CD[Element] = True
+        self.CD[Element] = True
     
     def chunk(self, lst, size):
         return [lst[i:i+size] for i in range(0, len(lst), size)]
@@ -90,10 +89,10 @@ class Box:
         broken_box = self.chunk(self.main_box, 5)
         counter = 1
         for i in broken_box:
-            if self.isCrossed(i[0]) and self.isCrossed(i[1]) and self.isCrossed(i[2]) and self.isCrossed(i[3]) and self.isCrossed(i[4]):
-                return f"{counter}-row"
-            else:
-                counter += 1
+                if self.isCrossed(i[0]) and self.isCrossed(i[1]) and self.isCrossed(i[2]) and self.isCrossed(i[3]) and self.isCrossed(i[4]):
+                    return f"{counter}-row"
+                else:
+                    counter += 1
         return None
     
     def check_diagonal(self):

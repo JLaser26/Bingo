@@ -21,6 +21,7 @@ def main():
     P1 = Box()
     while True:
         bc = BINGO_COUNTER(P1)
+        P1.updater()
         clear()
         print()
         print("=="*20)
@@ -33,6 +34,7 @@ def main():
         Select(P1)
         if P1.box_finish():
             print(P1)
+            print(P1.group_data)
             break
 
 if __name__ == "__main__":
