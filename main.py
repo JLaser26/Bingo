@@ -17,24 +17,33 @@ def BINGO_COUNTER(player: Box):
 
     return d[res]
 
+def row_counter(player: Box):
+    rl = player.RowLined()
+    res = ""
+    for i in rl:
+        if rl[i] == True:
+            res += str(i) + ", "
+        else:
+            continue
+    return res
+
 def main():
     P1 = Box()
+    c=0
     while True:
-        bc = BINGO_COUNTER(P1)
-        P1.updater()
+        rc = row_counter(P1)
         clear()
         print()
         print("=="*20)
         print()
         print(P1)
-        if bc:
-            print(bc)
         print("=="*20)
+        print(rc)
+        
 
         Select(P1)
         if P1.box_finish():
             print(P1)
-            print(P1.group_data)
             break
 
 if __name__ == "__main__":

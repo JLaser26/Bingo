@@ -103,3 +103,15 @@ class Box:
             return f"2-dia"
         else:
             return None
+
+    def RowLined(self):
+        mb = self.chunk(self.main_box, 5)
+        row_results = [all(self.isCrossed(item) for item in sublist) for sublist in mb]
+        d={}
+        for i in range(1,6):
+            d[i] = row_results[i-1]
+        return d
+
+
+# A = Box()
+# print(A.RowLined())
