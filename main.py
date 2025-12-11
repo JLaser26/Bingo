@@ -31,13 +31,29 @@ def row_counter(player: Box):
     
     return out
 
+def column_counter(player: Box):
+    bingo_string = {1: "B", 2: "I", 3: "N", 4: "G", 5: "O"}
+    rl = player.ColumnLined()
+    res = []
+    for i in rl:
+        if rl[i] == True:
+            res.append(i)
+
+    out = ""
+    for i in res:
+        out+=bingo_string[i]
+    
+    return out
+
+
 def main():
 
     P1 = Box()
 
     while True:
-        
-        rc = row_counter(P1)
+
+        # rc = row_counter(P1)
+        cc = column_counter(P1)
 
         if not P1.box_finish():
             clear()
@@ -46,12 +62,12 @@ def main():
             print()
             print(P1)
             print("=="*20)
-            print(rc)
+            print(cc)
             Select(P1)
 
         else:
             print(P1)
-            print(rc)
+            print(cc)
             break
     
         
