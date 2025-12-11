@@ -18,33 +18,43 @@ def BINGO_COUNTER(player: Box):
     return d[res]
 
 def row_counter(player: Box):
+    bingo_string = {1: "B", 2: "I", 3: "N", 4: "G", 5: "O"}
     rl = player.RowLined()
-    res = ""
+    res = []
     for i in rl:
         if rl[i] == True:
-            res += str(i) + ", "
-        else:
-            continue
-    return res
+            res.append(i)
+
+    out = ""
+    for i in res:
+        out+=bingo_string[i]
+    
+    return out
 
 def main():
-    P1 = Box()
-    c=0
-    while True:
-        rc = row_counter(P1)
-        clear()
-        print()
-        print("=="*20)
-        print()
-        print(P1)
-        print("=="*20)
-        print(rc)
-        
 
-        Select(P1)
-        if P1.box_finish():
+    P1 = Box()
+
+    while True:
+        
+        rc = row_counter(P1)
+
+        if not P1.box_finish():
+            clear()
+            print()
+            print("=="*20)
+            print()
             print(P1)
+            print("=="*20)
+            print(rc)
+            Select(P1)
+
+        else:
+            print(P1)
+            print(rc)
             break
+    
+        
 
 if __name__ == "__main__":
     main()

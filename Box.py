@@ -111,7 +111,4 @@ class Box:
         for i in range(1,6):
             d[i] = row_results[i-1]
         return d
-
-
-# A = Box()
-# print(A.RowLined())
+    
