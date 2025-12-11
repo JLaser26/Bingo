@@ -8,15 +8,6 @@ def Select(player: Box):
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def BINGO_COUNTER(player: Box):
-    d = {0: None, 1: "B", 2: "BI", 3: "BIN", 4: "BING", 5: "BINGO"}
-    res = 0
-    if player.check_vertical(): res += 1
-    if player.check_horizontal(): res += 1
-    if player.check_diagonal(): res += 1
-
-    return d[res]
-
 def row_counter(player: Box):
     bingo_string = {1: "B", 2: "I", 3: "N", 4: "G", 5: "O"}
     rl = player.RowLined()
@@ -45,6 +36,15 @@ def column_counter(player: Box):
     
     return out
 
+def Result(player: Box, rc, cc):
+    h = rc(player)
+    v = cc(player)
+
+    res = h + v
+    res = list(set(res))
+
+    return res
+
 
 def main():
 
@@ -52,8 +52,9 @@ def main():
 
     while True:
 
-        # rc = row_counter(P1)
-        cc = column_counter(P1)
+        rc = row_counter
+        cc = column_counter
+        res = Result(P1, rc, cc)
 
         if not P1.box_finish():
             clear()
@@ -62,12 +63,14 @@ def main():
             print()
             print(P1)
             print("=="*20)
-            print(cc)
+            # print(cc)
+            print(res)
             Select(P1)
 
         else:
             print(P1)
-            print(cc)
+            # print(cc)
+            print(res)
             break
     
         
