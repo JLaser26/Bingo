@@ -9,41 +9,37 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 def row_counter(player: Box):
-    bingo_string = {1: "B", 2: "I", 3: "N", 4: "G", 5: "O"}
     rl = player.RowLined()
     res = []
     for i in rl:
         if rl[i] == True:
             res.append(i)
 
-    out = ""
-    for i in res:
-        out+=bingo_string[i]
-    
-    return out
+    return res
 
 def column_counter(player: Box):
-    bingo_string = {1: "B", 2: "I", 3: "N", 4: "G", 5: "O"}
     rl = player.ColumnLined()
     res = []
     for i in rl:
         if rl[i] == True:
             res.append(i)
 
-    out = ""
-    for i in res:
-        out+=bingo_string[i]
-    
-    return out
+    return res
 
 def Result(player: Box, rc, cc):
+    point_table = {0: "*", 1: "B", 2: "BI", 3: "BIN", 4: "BING", 5: "BINGO"}
     h = rc(player)
     v = cc(player)
 
-    res = h + v
-    res = list(set(res))
-
-    return res
+    ml = h+v
+    point = 0
+    for _ in ml:
+        point+=1    
+    
+    if point <= 5:
+        return point_table[point]
+    elif point > 5:
+        return point_table[5]
 
 
 def main():
