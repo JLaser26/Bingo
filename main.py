@@ -26,12 +26,22 @@ def column_counter(player: Box):
 
     return res
 
-def Result(player: Box, rc, cc):
+def diagonal_counter(player: Box):
+    dl = player.DiagonalLined()
+    res = []
+    for i in dl:
+        if dl[i] == True:
+            res.append(i)
+    
+    return res
+
+def Result(player: Box, rc, cc, dc):
     point_table = {0: "*", 1: "B", 2: "BI", 3: "BIN", 4: "BING", 5: "BINGO"}
     h = rc(player)
     v = cc(player)
+    d = dc(player)
 
-    ml = h+v
+    ml = h+v+d
     point = 0
     for _ in ml:
         point+=1    
@@ -41,7 +51,6 @@ def Result(player: Box, rc, cc):
     elif point > 5:
         return point_table[5]
 
-
 def main():
 
     P1 = Box()
@@ -50,7 +59,8 @@ def main():
 
         rc = row_counter
         cc = column_counter
-        res = Result(P1, rc, cc)
+        dc = diagonal_counter
+        res = Result(P1, rc, cc, dc)
 
         if not P1.box_finish():
             clear()
@@ -59,17 +69,13 @@ def main():
             print()
             print(P1)
             print("=="*20)
-            # print(cc)
             print(res)
             Select(P1)
 
         else:
             print(P1)
-            # print(cc)
             print(res)
-            break
-    
-        
+            break    
 
 if __name__ == "__main__":
     main()
