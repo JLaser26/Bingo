@@ -1,9 +1,27 @@
 from Box import Box
 import os
+from random import choice
 
 def Select(player: Box):
     sec = input("Enter your selection [from '01' to '25']:- ")
     player.cross_element(sec)
+
+#Tested and works fine!
+def autoSelect(player: Box):
+    B = [    "01","02","03","04","05",
+             "06","07","08","09","10",
+             "11","12","13","14","15",
+             "16","17","18","19","20",
+             "21","22","23","24","25"
+             ]
+    while True:
+        a = choice(B)
+        if not player.isCrossed(a):
+            player.cross_element(a)
+            break
+        elif player.isCrossed(a):
+            B.pop(B.index(a))
+            continue
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -54,6 +72,7 @@ def Result(player: Box, rc, cc, dc):
 def main():
 
     P1 = Box()
+    P2 = Box()
 
     while True:
 
