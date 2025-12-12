@@ -68,8 +68,7 @@ class Box:
         d={}
         for i in range(1,3):
             d[i] = row_results[i-1]
-        return d
-        
+        return d     
 
     def RowLined(self):
         mb = self.chunk(self.main_box, 5)
