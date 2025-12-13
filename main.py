@@ -6,8 +6,10 @@ def Select(player: Box):
     sec = input("Enter your selection [from '01' to '25']:- ")
     if player.isCrossed(sec):
         print("Already crossed try again!")
+        return None
     else:
         player.cross_element(sec)
+        return sec
 
 #Tested and works fine!
 def autoSelect(player: Box, DF = None):
@@ -83,6 +85,9 @@ def updater(P: Box):
 
     return res
 
+def GAME(p1: Box, p2: Box):
+    ...
+    
 def main():
 
     P1 = Box()
@@ -101,7 +106,7 @@ def main():
             print(P1)
             print("=="*20)
             print(res1)
-            Select(P1)
+            # Select(P1)
 
         else:
             print(P1)
