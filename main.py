@@ -2,6 +2,9 @@ from Box import Box
 import os
 from random import choice
 
+global count
+count = 0
+
 def Select(player: Box):
     sec = input("Enter your selection [from '01' to '25']:- ")
     if player.isCrossed(sec):
@@ -33,6 +36,13 @@ def autoSelect(player: Box, DF = None):
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def flipper(a):
+    while True:
+        if a % 2 == 0 or a == 0:
+            return 0
+        elif a % 2 != 0 or a == 1:
+            return 1
 
 def row_counter(player: Box):
     rl = player.RowLined()
@@ -85,18 +95,33 @@ def updater(P: Box):
 
     return res
 
-def GAME(p1: Box, p2: Box):
-    ...
-    
+def GAME(p1: Box, p2: Box, count: int):
+    if count == 0:
+        f = input("Enter [0 to 25]:- ")
+        player_input = f
+        comp_input = player_input
+        p1.cross_element(player_input)
+        p2.cross_element(comp_input)
+        print(f"you choosed:- {player_input}")
+    elif count == 1:
+        comp_input = autoSelect(p2)
+        player_input = comp_input
+        p1.cross_element(player_input)
+        p2.cross_element(comp_input)
+        print(f"computer choose:- {comp_input}")
+
+
 def main():
 
     P1 = Box()
     P2 = Box()
+    count = 0
 
     while True:
 
         res1 = updater(P1)
         res2 = updater(P2)
+        c = flipper(count)
 
         if not P1.box_finish():
             clear()
@@ -106,7 +131,9 @@ def main():
             print(P1)
             print("=="*20)
             print(res1)
+            GAME(P1, P2, c)
             # Select(P1)
+            count+=1
 
         else:
             print(P1)
