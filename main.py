@@ -14,7 +14,6 @@ def Select(player: Box):
         player.cross_element(sec)
         return sec
 
-#Tested and works fine!
 def autoSelect(player: Box, DF = None):
     B = [    "01","02","03","04","05",
              "06","07","08","09","10",
