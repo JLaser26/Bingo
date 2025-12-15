@@ -2,7 +2,7 @@ from Box import Box
 import os
 from random import choice
 
-global count
+#CURRENT PROBLEM:- clear() does not work with in function print statements. 
 count = 0
 
 def Select(player: Box):
