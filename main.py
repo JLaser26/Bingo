@@ -25,13 +25,14 @@ def autoSelect(player: Box, DF = None):
         while True:
             a = choice(B)
             if not player.isCrossed(a):
-                player.cross_element(a)
-                break
+                # player.cross_element(a)
+                return a
             elif player.isCrossed(a):
                 B.pop(B.index(a))
                 continue
     if DF:
-        player.cross_element(DF)
+        # player.cross_element(DF)
+        return DF
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -98,16 +99,14 @@ def GAME(p1: Box, p2: Box, count: int):
     if count == 0:
         f = input("Enter [0 to 25]:- ")
         player_input = f
-        comp_input = player_input
         p1.cross_element(player_input)
-        p2.cross_element(comp_input)
-        print(f"you choosed:- {player_input}")
+        p2.cross_element(player_input)
+        return f"you choosed:- {player_input}"
     elif count == 1:
         comp_input = autoSelect(p2)
-        player_input = comp_input
-        p1.cross_element(player_input)
         p2.cross_element(comp_input)
-        print(f"computer choose:- {comp_input}")
+        p1.cross_element(comp_input)
+        return f"computer choose:- {comp_input}"
 
 
 def main():
@@ -123,16 +122,18 @@ def main():
         c = flipper(count)
 
         if not P1.box_finish():
-            clear()
             print()
             print("=="*20)
             print()
             print(P1)
             print("=="*20)
             print(res1)
-            GAME(P1, P2, c)
+            g = GAME(P1, P2, c)
+            print(g)
             # Select(P1)
             count+=1
+            clear()
+
 
         else:
             print(P1)
