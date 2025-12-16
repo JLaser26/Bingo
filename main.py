@@ -3,8 +3,6 @@ import os
 from random import choice
 from time import sleep
 
-count = 0
-
 def autoSelect(player: Box, DF = None):
     B = [    "01","02","03","04","05",
              "06","07","08","09","10",
@@ -16,13 +14,11 @@ def autoSelect(player: Box, DF = None):
         while True:
             a = choice(B)
             if not player.isCrossed(a):
-                # player.cross_element(a)
                 return a
             elif player.isCrossed(a):
                 B.pop(B.index(a))
                 continue
     if DF:
-        # player.cross_element(DF)
         return DF
 
 def clear():
@@ -110,7 +106,6 @@ def Winner(s1: str, s2: str):
     else:
         pass
 
-
 def main():
 
     P1 = Box()
@@ -126,37 +121,42 @@ def main():
 
         if not P1.box_finish() and not win:
             clear()
-
             print()
+
             print("=="*20)
             print()
             print(P1)
             print(res1)
             print("=="*20)
+
             g = GAME(P1, P2, c)
             print("--"*20)
             print(style(g, "1", "33"))
             print("--"*20)
+
             sleep(2)
             count+=1
 
-
         else:
             clear()
+
             print("~~"*20)
             print("YOUR BOX:- \n")
             print(P1)
-            print(f"-->> {res1}")
+            print(f"Completion -->> {res1}")
             print("~~"*20)
+
             if win == "PLAYER WON":
                 print(style(win, "1", "32"))
             elif win == "Computer WON":
                 print(style(win, "1", "31"))
+
             print("~~"*20)
             print("Computer's BOX:- \n")
             print(P2)
-            print(res2)
+            print(f"Completion -->> {res2}")
             print("~~"*20)
+
             sleep(3.5)
             break    
 
