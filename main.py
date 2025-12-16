@@ -3,17 +3,7 @@ import os
 from random import choice
 from time import sleep
 
-#CURRENT PROBLEM:- result declaration
 count = 0
-
-def Select(player: Box):
-    sec = input("Enter your selection [from '01' to '25']:- ")
-    if player.isCrossed(sec):
-        print("Already crossed try again!")
-        return None
-    else:
-        player.cross_element(sec)
-        return sec
 
 def autoSelect(player: Box, DF = None):
     B = [    "01","02","03","04","05",
@@ -37,6 +27,9 @@ def autoSelect(player: Box, DF = None):
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def style(text, *codes):
+    return f"\033[{';'.join(codes)}m{text}\033[0m"
 
 def flipper(a):
     while True:
@@ -109,6 +102,14 @@ def GAME(p1: Box, p2: Box, count: int):
         p1.cross_element(comp_input)
         return f"computer choose:- {comp_input}"
 
+def Winner(s1: str, s2: str):
+    if s1 == "BINGO":
+        return "PLAYER WON"
+    elif s2 == "BINGO":
+        return "Computer WON"
+    else:
+        pass
+
 
 def main():
 
@@ -121,8 +122,9 @@ def main():
         res1 = updater(P1)
         res2 = updater(P2)
         c = flipper(count)
+        win = Winner(res1, res2)
 
-        if not P1.box_finish():
+        if not P1.box_finish() and not win:
             clear()
 
             print()
@@ -132,15 +134,28 @@ def main():
             print("=="*20)
             print(res1)
             g = GAME(P1, P2, c)
-            print(g)
+            print("--"*20)
+            print(style(g, "1", "33"))
+            print("--"*20)
             sleep(2)
-            # Select(P1)
             count+=1
 
 
         else:
+            clear()
+            print("~~"*20)
+            print("YOUR BOX:- \n")
             print(P1)
-            print(res1)
+            print(f"-->> {res1}")
+            print("~~"*20)
+            if win == "PLAYER WON":
+                print(style(win, "1", "32"))
+            elif win == "Computer WON":
+                print(style(win, "1", "31"))
+            print("~~"*20)
+            print("Computer's BOX:- \n")
+            print(P2)
+            print("~~"*20)
             break    
 
 if __name__ == "__main__":
