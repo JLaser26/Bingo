@@ -1,8 +1,9 @@
 from Box import Box
 import os
 from random import choice
+from time import sleep
 
-#CURRENT PROBLEM:- clear() does not work with in function print statements. 
+#CURRENT PROBLEM:- result declaration
 count = 0
 
 def Select(player: Box):
@@ -122,6 +123,8 @@ def main():
         c = flipper(count)
 
         if not P1.box_finish():
+            clear()
+
             print()
             print("=="*20)
             print()
@@ -130,9 +133,9 @@ def main():
             print(res1)
             g = GAME(P1, P2, c)
             print(g)
+            sleep(2)
             # Select(P1)
             count+=1
-            clear()
 
 
         else:
