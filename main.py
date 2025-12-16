@@ -131,8 +131,8 @@ def main():
             print("=="*20)
             print()
             print(P1)
-            print("=="*20)
             print(res1)
+            print("=="*20)
             g = GAME(P1, P2, c)
             print("--"*20)
             print(style(g, "1", "33"))
@@ -155,7 +155,9 @@ def main():
             print("~~"*20)
             print("Computer's BOX:- \n")
             print(P2)
+            print(res2)
             print("~~"*20)
+            sleep(3.5)
             break    
 
 if __name__ == "__main__":
