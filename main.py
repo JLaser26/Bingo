@@ -87,16 +87,16 @@ def updater(P: Box):
 
 def GAME(p1: Box, p2: Box, count: int):
     if count == 0:
-        f = input("Enter [0 to 25]:- ")
+        f = input("Enter a number from [01 to 25]:- ")
         player_input = f
         p1.cross_element(player_input)
         p2.cross_element(player_input)
-        return f"you choosed:- {player_input}"
+        return f"you crossed:- {player_input}"
     elif count == 1:
         comp_input = autoSelect(p2)
         p2.cross_element(comp_input)
         p1.cross_element(comp_input)
-        return f"computer choose:- {comp_input}"
+        return f"computer crossed:- {comp_input}"
 
 def Winner(s1: str, s2: str):
     if s1 == "BINGO":
@@ -126,7 +126,7 @@ def main():
             print("=="*20)
             print()
             print(P1)
-            print(res1)
+            print(f"Completion -->> {res1}")
             print("=="*20)
 
             g = GAME(P1, P2, c)
