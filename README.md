@@ -2,6 +2,8 @@
 
 ***HOW TO PLAY?***
 
+***$ RUN the file main.py.***
+
 ***-> Choose a number from {01 to 25}; numbers from (1 to 9) must be entered as 01,07 etc.***
 
 ***-> Don't choose the same number twice.***
