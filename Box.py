@@ -1,8 +1,11 @@
 
 class Box:
-    """The BINGO BOX object\n
-    Contains 5x5 block with numbers 1 to 25"""
+    """\n
+    Contains 5x5 block with numbers 01 to 25
+    """
+
     from random import shuffle
+    
     def __init__(self):
         self.main_box = self.create_box()
         self.CD = dict.fromkeys(self.main_box, False)
